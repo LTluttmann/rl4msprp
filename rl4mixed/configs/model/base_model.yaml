@@ -1,0 +1,14 @@
+model_type: ???
+embedding_dim: ???
+num_mhsa_layers: ???
+num_heads: 8
+dropout: 0.1
+feed_forward_hidden: 512
+normalization: batch
+tanh_clipping: 10.0
+baseline_beam_width: 10
+sku_rank_beam_penalty: 0.0
+shelf_rank_beam_penalty: 0.0
+use_graph_emb_in_decoder: false
+use_q_as_v: true
+size_agn_updates: true

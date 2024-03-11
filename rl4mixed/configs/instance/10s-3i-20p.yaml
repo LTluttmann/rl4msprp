@@ -1,0 +1,15 @@
+# @package _global_
+defaults:
+  - base_instance@instance
+  - _self_
+
+
+instance:
+  num_shelves: 10
+  num_skus: 3
+  num_storage_locations: 20
+  
+train:
+  batch_size: 512
+  batch_size_valid: 1024
+  max_grad_norm: 1.0

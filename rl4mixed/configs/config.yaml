@@ -1,0 +1,47 @@
+defaults:
+  - _self_
+  - model: comb
+  - instance: 10s-3i-20p
+  - override hydra/launcher: joblib
+
+train:
+  train: true
+  checkpoint: null
+  actor_lr: 0.0002
+  critic_lr: 0.0001
+  max_grad_norm: 2.0
+  batch_size: 512
+  batch_size_valid: 512
+  bl_warmup_epochs: 0
+  baseline: pomo
+  epochs: 50
+  train_size: 350000
+  val_size: 30000
+  exp_beta: 0.8
+  pomo_size: 10
+  decode_type: pomo_new
+  first_gpu: 0
+  num_gpus: ${num_jobs:}
+
+test:
+  batch_size_test: 64
+  beam_width: 100
+  comp_beam_width: 1000
+  test_size: 10000
+  decode_type: beam_search
+  active_search_iterations: 0
+
+neptune_id: null 
+
+hydra:
+  run:
+    dir: ${ROOTDIR:}/outputs/${instance.id}/runs/${model.model_type}/${now:%Y-%m-%d}/${now:%H-%M-%S}-0
+  sweep:
+    dir: ${ROOTDIR:}/outputs/${instance.id}/runs/${model.model_type}/${now:%Y-%m-%d}
+    subdir: ${now:%H-%M-%S}-${hydra:job.num}
+  sweeper:
+    params:
+      model: flat,comb # ,hybrid,matnet,softmax,han,hete
+      instance: 10s-3i-20p,10s-6i-20p,10s-9i-20p
+  launcher:
+    n_jobs: ${num_jobs:${train.first_gpu}}

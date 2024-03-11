@@ -1,0 +1,21 @@
+defaults:
+  - instance: 10s-3i-20p
+  - override hydra/launcher: joblib
+
+test:
+  gurobi_timeout: 3600
+  n_exact_instances: 20
+  solve_exact: true
+  render: true
+  no_sol_add_timeout: 0
+
+hydra:
+  output_subdir: null
+  run:
+    dir: ${ROOTDIR:}/outputs/${instance.id}
+  sweep:
+    dir: ${ROOTDIR:}/outputs/
+    subdir: ${instance.id}
+  sweeper:
+    params:
+      instance: 15s-9i-30p,20s-12i-40p,25s-18i-50p

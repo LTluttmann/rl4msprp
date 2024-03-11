@@ -1,0 +1,15 @@
+# @package _global_
+defaults:
+  - _self_
+  - base_instance@instance
+
+instance:
+  num_shelves: 25
+  num_skus: 18
+  num_storage_locations: 50
+
+
+train:
+  batch_size: 512
+  batch_size_valid: 1024
+  actor_lr: 0.0001

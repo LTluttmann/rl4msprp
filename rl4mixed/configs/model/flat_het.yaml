@@ -1,0 +1,22 @@
+defaults:
+  - base_model
+
+model_type: flat_het
+embedding_dim: 256
+num_mhsa_layers: 4
+
+encoder_features:
+  shelf:
+    - loc
+  item:
+    - items_ohe_rand
+    - demand_cvec
+
+encoder_context_features: [] 
+
+decoder_context_features:
+  - demand
+  - remaining_load
+
+decoder_dynamic_features:
+  - supply_flat_w_depot_cvec

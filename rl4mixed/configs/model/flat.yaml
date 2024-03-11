@@ -1,0 +1,20 @@
+defaults:
+  - base_model
+
+model_type: flat
+embedding_dim: 512
+num_mhsa_layers: 4
+
+encoder_features:
+- loc
+- supply
+
+encoder_context_features:
+- demand  # in flat model we need all information in a single encoder
+
+decoder_context_features:
+- demand
+- remaining_load
+
+decoder_dynamic_features:
+- supply_w_depot

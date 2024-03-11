@@ -1,0 +1,27 @@
+defaults:
+  - base_model
+
+model_type: hete
+embedding_dim: 512
+num_mhsa_layers: 4
+
+encoder_features:
+  shelf:
+    - loc
+  item:
+    - demand_ohe
+
+encoder_context_features: [] 
+
+decoder_context_features:
+  shelf:
+    - remaining_load
+  item:
+    - remaining_load
+
+decoder_dynamic_features:
+  shelf: []
+  item:
+    - demand_w_dummy_cvec
+  edge:
+    - taken_units_w_depot_and_dummy_cvec

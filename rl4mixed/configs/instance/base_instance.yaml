@@ -1,0 +1,12 @@
+seed: 12345678
+task: vrp
+debug: false
+num_shelves: ???
+num_skus: ???
+num_storage_locations: ???
+min_demand: 0
+max_demand: 4
+min_supply: 1
+avg_supply_to_demand_ratio: 2.0
+normalize: true
+id: ${instance.num_shelves}s-${instance.num_skus}i-${instance.num_storage_locations}p
